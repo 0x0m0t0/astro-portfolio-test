@@ -1,0 +1,59 @@
+<script>
+    import BlazeSlider  from 'blaze-slider'
+    import 'blaze-slider/dist/blaze.css'
+    const el = document.querySelector('.blaze-slider')
+    new BlazeSlider(el, {
+  all: {
+    slidesToShow: 3,
+  },
+  '(max-width: 500px)': {
+    slidesToShow: 1,
+  },
+})
+</script>
+<style>
+    .blaze-slider {
+  --slides-to-show: 3;
+}
+.blaze-track {
+    display: flex;
+    justify-content: space-between;
+}
+.blaze-track div:nth-child(1) img, .blaze-track div:nth-child(3) img{
+    max-height: 100px;
+}
+@media (max-width: 500px) {
+  .blaze-slider {
+    --slides-to-show: 1;
+  }
+  /* .blaze-track div:nth-child(1) img{
+    max-height: 100%;
+    max-width:90vw;
+    border: 3px solid blue;
+} */
+}
+</style>
+
+
+    <div class="blaze-slider" >
+			<div class="blaze-container">
+			  <div class="blaze-track-container">
+				<div class="blaze-track">
+				  <div><img src="/img/img1.png" alt=""></div>
+				  <div><img src="/img/img2.jpg" alt=""></div>
+				  <div><img src="/img/img3.jpg" alt=""></div>
+				  <div><img src="/img/img4.jpg" alt=""></div>
+				  <div><img src="/img/img5.png" alt=""></div>
+			
+				</div>
+			  </div>
+		  
+			  <!-- navigation buttons -->
+			  <button class="blaze-prev">previous</button>
+			  <button class="blaze-next">next</button>
+		  
+			  <!-- pagination container -->
+			  <div class="blaze-pagination"></div>
+			</div>
+		  </div>
+    
