@@ -2,58 +2,145 @@
     import BlazeSlider  from 'blaze-slider'
     import 'blaze-slider/dist/blaze.css'
     const el = document.querySelector('.blaze-slider')
-    new BlazeSlider(el, {
+
+    const slider = new BlazeSlider(el, {
   all: {
+   
+    transitionTimingFunction: 'linear',
+    transitionDuration: 300,
     slidesToShow: 3,
   },
   '(max-width: 500px)': {
     slidesToShow: 1,
   },
+
+
 })
+
+
+
+      let i=1;
+      let prevSlide = document.querySelector(`.blaze-track div:nth-child(${i}) img`);
+      prevSlide.addEventListener('click', () => {
+          slider.prev()
+        
+          console.log(i)
+          const images = document.querySelectorAll<HTMLElement>('.blaze-track div img');
+   
+
+    
+  
+          prevSlide = document.querySelectorAll('.blaze-track div')[0];
+          images.forEach((img) => {
+         img.style.border = '2px solid yellow';
+            });
+
+  });
+
+      // const newSlide = document.querySelector('.blaze-track div:nth-child(3) img');
+      // newSlide.style.transform = 'scale(1)';
+
+ 
+ 
+
+// const imageLinks = document.getElementsByTagName('a');
+
+// Array.from(imageLinks).forEach((link, index) => {
+//   (link as HTMLElement).style.border  = '20px solid blue';
+
+//   link.addEventListener('click', () => {
+//   const images = document.querySelectorAll<HTMLElement>('.blaze-track div:nth-child(" ") img');
+  
+//   images.forEach((img) => {
+//     img.style.border = '20px solid yellow';
+//     });
+
+//   });
+// })
+
+
+
+
+
+
 </script>
 <style>
+
+
     .blaze-slider {
   --slides-to-show: 3;
 }
 .blaze-track {
+
     display: flex;
     justify-content: space-between;
+
+    
+    
+  
 }
-.blaze-track div:nth-child(1) img, .blaze-track div:nth-child(3) img{
-    max-height: 100px;
+
+.blaze-track div img {
+  transform: scale(0.3); 
+  opacity:0.4;
+  transition: opacity 1s ease;
+  transition: transform 1s steps(80); 
+  transform-origin: center center;
+
 }
+
+.blaze-track div:nth-child(2) img {
+  max-width: 100%;
+  opacity:1;
+  transform: scale(1); 
+
+}
+  
+
+
+
 @media (max-width: 500px) {
   .blaze-slider {
     --slides-to-show: 1;
   }
-  /* .blaze-track div:nth-child(1) img{
+  .blaze-track div:nth-child(1) img, .blaze-track div:nth-child(3) img{
+    max-height:100%;
+}
+  .blaze-track div img{
     max-height: 100%;
     max-width:90vw;
-    border: 3px solid blue;
-} */
+
 }
+}
+
+
 </style>
 
 
     <div class="blaze-slider" >
 			<div class="blaze-container">
+
+        	  <!-- navigation buttons -->
+			  <a class="blaze-prev">previous</a>
+			  <a class="blaze-next">next</a>
+		  
+
+
+			 
 			  <div class="blaze-track-container">
 				<div class="blaze-track">
-				  <div><img src="/img/img1.png" alt=""></div>
-				  <div><img src="/img/img2.jpg" alt=""></div>
-				  <div><img src="/img/img3.jpg" alt=""></div>
-				  <div><img src="/img/img4.jpg" alt=""></div>
-				  <div><img src="/img/img5.png" alt=""></div>
+				  <div><img src="/img/pexels_lorence_lozano1.jpg" alt="lorence_lozano"></div>
+				  <div><img src="/img/pexels_lorence_lozano2.jpg" alt="lorence_lozano"></div>
+				  <div><img src="/img/pexels_lorence_lozano3.jpg" alt="lorence_lozano"></div>
+				  <div><img src="/img/pexels_lorence_lozano4.jpg" alt="lorence_lozano"></div>
+				  <div><img src="/img/pexels_lorence_lozano5.jpg" alt="lorence_lozano"></div>
+				
 			
 				</div>
 			  </div>
 		  
-			  <!-- navigation buttons -->
-			  <button class="blaze-prev">previous</button>
-			  <button class="blaze-next">next</button>
-		  
-			  <!-- pagination container -->
-			  <div class="blaze-pagination"></div>
+        <div class="blaze-pagination"></div>
+			  
 			</div>
 		  </div>
     
